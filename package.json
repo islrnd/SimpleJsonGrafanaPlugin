@@ -1,0 +1,17 @@
+{
+  "name": "alarmsone",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"No test\" && exit 1"
+  },
+  "author": "",
+  "license": "",
+  "dependencies": {
+    "body-parser": "^1.15.1",
+    "express": "^4.13.4",
+    "lodash": "^4.13.1",
+    "axios": "^0.20.0"
+  }
+}
