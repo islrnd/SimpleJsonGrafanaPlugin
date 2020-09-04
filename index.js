@@ -32,6 +32,37 @@ function fetchAlarmsOneResponse(){
 	return opmanagerdata;
 }
 
+let opManagerCall = new Promise((resolve, reject) => {
+	http.get('http://10.54.3.176:8061/api/json/alarm/listAlarms?apiKey=77169553e3a7dac66d4d8227e686c526&severity=1,2,3', (response) => {
+		let opsData = '';
+
+		response.on('data', (fragments) => {
+			opsData += fragments;
+			chunks_of_data.push(fragments);
+		});
+
+		response.on('end', () => {
+			let response_body = Buffer.concat(chunks_of_data);
+			
+			// promise resolved on success
+			resolve(response_body.toString());
+		});
+
+		response.on('error', (error) => {
+			// promise rejected on error
+			reject(error);
+		});
+	});
+});
+
+// promise resolved or rejected asynchronously
+opManagerCall.then((response) => {
+	console.log(response);
+}).catch((error) => {
+	console.log(error);
+});
+
+
 
 var annotation = {
   name : "annotation name",
